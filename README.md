@@ -1,7 +1,7 @@
 # AgentShifts
 
 <p align="center">
-  <img src="link_del_tuo_logo.png" width="120" alt="AgentShifts Logo">
+  <img src="screenshots/logoApp.png" width="120" alt="AgentShifts Logo">
 </p>
 
 <p align="center">
@@ -11,9 +11,9 @@
 </p>
 
 <p align="center">
-  <img src="link_screenshot_tema_scuro.jpg" width="250" alt="Tema Scuro">
+  <img src="screenshots/temaScuroHome.png" width="250" alt="Tema Scuro">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="link_screenshot_tema_chiaro.jpg" width="250" alt="Tema Chiaro">
+  <img src="screenshots/temaChiaroHome.png" width="250" alt="Tema Chiaro">
 </p>
 
 Un'applicazione Android nativa sviluppata in Java per gestire, in maniera isolata da altre app, i propri turni di lavoro, voli giornalieri e giorni di riposo.
