@@ -66,9 +66,6 @@ public class WorkingDayDB {
     }
 
     // READ 2: Giornata di un utente per una SPECIFICA DATA (x UI)
-    // Nota: confrontare le date in millisecondi in SQL richiede attenzione se cambia l'orario (ore/minuti).
-    // In un'app reale si tende a salvare la data come "YYYY-MM-DD" o a troncare i millisecondi a mezzanotte.
-    // Per ora teniamo la logica coerente con il tuo POJO.
     public WorkingDay getWorkingDayByDateAndUser(Date data, int userID) {
         WorkingDay workingDay = null;
 
