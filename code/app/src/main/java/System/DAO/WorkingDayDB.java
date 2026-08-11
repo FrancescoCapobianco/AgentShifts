@@ -84,8 +84,6 @@ public class WorkingDayDB {
     }
 
     // DELETE: Cancella un'intera giornata lavorativa
-    // ATTENZIONE: Questo cancellerà SOLO la riga in "workingday". I voli e i turni associati
-    // dovranno essere cancellati manualmente da ShiftSystem prima di chiamare questo metodo.
     public void deleteWorkingDay(int id) {
         database.delete(TABLE_WORKING_DAY, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
