@@ -1,5 +1,3 @@
-# AgentShifts
-
 <p align="center">
   <img src="screenshots/logoApp.png" width="120" alt="AgentShifts Logo">
 </p>
@@ -9,6 +7,8 @@
     <img src="https://img.shields.io/badge/Download-APK-2196F3?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
 </p>
+
+# AgentShifts
 
 <p align="center">
   <img src="screenshots/temaScuroHome.png" width="250" alt="Tema Scuro">
