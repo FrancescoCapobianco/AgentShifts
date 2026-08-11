@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/FrancescoCapobianco/AgentShifts/main/code/app/src/main/res/drawable/logo_azienda.png" width="100" alt="AgentShifts Logo">
+  <img src="screenshots/logoApp.png" width="100" alt="AgentShifts Logo">
 </p>
 
 <h1 align="center">AgentShifts</h1>
