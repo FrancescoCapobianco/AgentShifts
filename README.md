@@ -42,7 +42,7 @@ Puoi testare l'app direttamente sul tuo telefono Android!
 
 1. Vai alla pagina [Releases](../../releases) di questo repository.
 2. Scarica il file `.apk` più recente.
-3. Apri il file scaricato sul tuo dispositivo Android e tocca **Installa**.
+3. Apri il file scaricato sul tuo dispositivo Android e tocca **Installa**. <br>
 *(Nota: potrebbe essere necessario abilitare "Installa app sconosciute" nelle impostazioni del tuo telefono).*
 
 ---
