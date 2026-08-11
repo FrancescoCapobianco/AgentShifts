@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="today_header_selected_darktheme">#4dabf7</color>
+    <color name="card_surface_color">#333333</color>
+</resources>

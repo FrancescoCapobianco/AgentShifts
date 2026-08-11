@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="?android:attr/windowBackground">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu Profilo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/menuSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stima Stipendio Mensile"
+        android:textColor="@color/white"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/menuWeekly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Turni della Settimana"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/menuTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cambia Tema"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/menuLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark" />
+</LinearLayout>

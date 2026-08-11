@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Nuovo Turno"
+        android:textColor="@color/blue"
+        android:textColorLink="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <EditText
+            android:id="@+id/editInizioTurno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Inizio turno"
+            android:inputType="time"
+            android:layout_marginEnd="8dp"/>
+        <EditText
+            android:id="@+id/editFineTurno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Fine turno"
+            android:inputType="time"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editMinutiAllungo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Minuti di allungo (opzionale)"
+        android:inputType="number"
+        android:layout_marginTop="12dp"/>
+
+    <EditText
+        android:id="@+id/editMinutiStraord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Minuti straordinario (opzionale)"
+        android:inputType="number"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

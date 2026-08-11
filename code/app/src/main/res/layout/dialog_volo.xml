@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Aggiungi Volo"
+        android:textColor="@color/blue"
+        android:textColorLink="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Compagnia Aerea:"
+        android:textSize="14sp"/>
+
+    <Spinner
+        android:id="@+id/spinnerCompagniaAerea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:padding="8dp"/>
+
+    <EditText
+        android:id="@+id/editCodiceVolo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Codice Volo (es. FR1033)"
+        android:inputType="textCapCharacters"
+        android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <EditText
+            android:id="@+id/editArrivo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Da (es. MXP)"
+            android:inputType="textCapCharacters"
+            android:layout_marginEnd="8dp"/>
+        <EditText
+            android:id="@+id/editDestinazione"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="A (es. JFK)"
+            android:inputType="textCapCharacters"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/windowBackground"
+    android:fitsSystemWindows="true"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="12dp"
+    android:paddingTop="16dp">
+
+    <!-- HEADER -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="999dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="@color/card_surface_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp">
+
+            <!-- LOGO AZIENDA -->
+            <ImageView
+                android:id="@+id/logoAzienda"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/background_transparent"
+                android:scaleType="centerInside" />
+
+            <!-- BENVENUTO -->
+            <TextView
+                android:id="@+id/textBenvenuto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Ciao!"
+                android:textColor="@color/today_header_selected_darktheme"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- ICONA PROFILO -->
+            <ImageView
+                android:id="@+id/btnProfileMenu"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_profile"
+                android:onClick="actionShowProfileMenu"
+                app:tint="@color/today_header_selected_darktheme" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:layout_marginTop="-18dp"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="18dp">
+
+            <!-- CALENDARIO -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/card_surface_color"
+                android:layout_marginBottom="24dp">
+
+                <com.applandeo.materialcalendarview.CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:pagesColor="@color/card_surface_color"
+                    app:headerColor="@color/card_surface_color"
+                    app:headerLabelColor="?android:attr/textColorPrimary"
+                    app:abbreviationsBarColor="@color/card_surface_color"
+                    app:daysLabelsColor="?android:attr/textColorPrimary"
+                    app:highlightedDaysLabelsColor="@color/blue"
+                    app:selectionLabelColor="@android:color/white"
+                    app:todayLabelColor="@color/today_header_selected_darktheme" />
+                    <!-- app:type="one_day_picker" -->
+            </androidx.cardview.widget.CardView>
+
+            <!-- TITOLO -->
+            <TextView
+                android:id="@+id/textDataSelezionata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="Dettagli: Oggi"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- CARD DETTAGLI -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/card_surface_color"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/textStatoGiornata"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nessun dato inserito"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/darker_gray"
+                        android:layout_marginBottom="8dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutDettagliTurno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/textOrariTurno"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="end">
+
+                            <TextView
+                                android:id="@+id/textAllungo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:textColor="#FF9800"
+                                android:textStyle="italic"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/textStraordinario"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:textColor="#F44336"
+                                android:textStyle="italic"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textContoVoli"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewVoli"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutAzioniGiornata"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/btnEliminaGiornata"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Elimina"
+                            android:backgroundTint="@android:color/holo_red_dark"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@android:color/white"
+                            android:onClick="actionEliminaGiornata"/>
+
+                        <Button
+                            android:id="@+id/btnModificaGiornata"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Modifica"
+                            android:backgroundTint="@color/blue"
+                            android:textColor="@android:color/white"
+                            android:onClick="actionModificaGiornata"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BOTTONI AZIONE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/btnAggiungiTurno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/blue"
+            android:text="Turno"
+            android:onClick="actionAggiungiTurno"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btnAggiungiVolo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/blue"
+            android:text="Volo"
+            android:onClick="actionAggiungiVolo"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btnImpostaRiposo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
+            android:text="Riposo"
+            android:onClick="actionImpostaRiposo"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</LinearLayout>

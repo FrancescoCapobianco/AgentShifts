@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@android:drawable/dialog_holo_light_frame">
+
+    <ImageView
+        android:id="@+id/imgLogoCompagnia"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="12dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textCodiceVolo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FR1033"
+            android:textColor="@color/blue"
+            android:textColorLink="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textNomeCompagnia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ryanair"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textTrattaVolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MXP -> JFK"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+</LinearLayout>
