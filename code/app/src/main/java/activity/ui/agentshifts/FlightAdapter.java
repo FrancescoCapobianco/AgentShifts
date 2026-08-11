@@ -32,12 +32,10 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     public void onBindViewHolder(@NonNull FlightViewHolder holder, int position) {
         Flight voloCorrente = listaVoli.get(position);
 
-        // Imposta i testi
         holder.textCodiceVolo.setText(voloCorrente.getCodiceVolo());
         holder.textNomeCompagnia.setText(voloCorrente.getCompagnia());
         holder.textTrattaVolo.setText(voloCorrente.getLuogoArrivo() + " -> " + voloCorrente.getLuogoDestinazione());
 
-        // Caricamento dinamico dell'immagine (La Magia!)
         String nomeFileImmagine = voloCorrente.getLogoDrawable();
         int imageResource = context.getResources().getIdentifier(nomeFileImmagine, "drawable", context.getPackageName());
 
