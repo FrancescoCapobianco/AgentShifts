@@ -1,47 +1,53 @@
 <p align="center">
-  <img src="screenshots/logoApp.png" width="120" alt="AgentShifts Logo">
+  <img src="https://raw.githubusercontent.com/FrancescoCapobianco/AgentShifts/main/code/app/src/main/res/drawable/logo_azienda.png" width="100" alt="AgentShifts Logo">
 </p>
+
+<h1 align="center">AgentShifts</h1>
 
 <p align="center">
   <a href="https://github.com/FrancescoCapobianco/AgentShifts/releases/latest">
-    <img src="https://img.shields.io/badge/Download-APK-2196F3?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
+    <img src="https://img.shields.io/badge/Download_APK-v1.0.0-2196F3?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
 </p>
 
-# AgentShifts
+<br>
 
 <p align="center">
-  <img src="screenshots/temaScuroHome.png" width="250" alt="Tema Scuro">
+  <img src="screenshots/temaScuroHome.png" width="260" alt="Tema Scuro">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/temaChiaroHome.png" width="250" alt="Tema Chiaro">
+  <img src="screenshots/temaChiaroHome.png" width="260" alt="Tema Chiaro">
 </p>
 
-Un'applicazione Android nativa sviluppata in Java per gestire, in maniera isolata da altre app, i propri turni di lavoro, voli giornalieri e giorni di riposo.
+---
+
+Un'applicazione Android sviluppata in Java per gestire in maniera semplice e intuitiva i propri turni di lavoro, voli giornalieri e giorni di riposo.
 
 ## Funzionalità
 
-* **Calendario:** Naviga tra i mesi e gestisci i tuoi impegni.
+* **Calendario Interattivo:** Naviga tra i mesi e gestisci i tuoi impegni con un'interfaccia fluida.
 * **Gestione Turni e Voli:** Aggiungi, modifica e tieni traccia di turni, voli e giorni di riposo.
-* **UI/UX Moderna:** Interfaccia pulita per una migliore leggibilità.
+* **UI/UX Moderna:** Interfaccia pulita.
 * **Tema Dinamico:** Supporto completo alla **Modalità Chiara e Scura** di sistema.
 
 ## Tecnologie Utilizzate
 
 * **Linguaggio:** Java
-* **UI:** XML, Componenti Android Material Design
-* **Librerie Esterne:** [Material-Calendar-View](https://github.com/Applandeo/Material-Calendar-View) (Applandeo) per l'implementazione del calendario.
+* **UI:** XML, Componenti Material Design 3
+* **Librerie Esterne:** [Material-Calendar-View](https://github.com/Applandeo/Material-Calendar-View) (Applandeo)
 * **IDE:** Android Studio
 
 ## Download & Installazione
 
-Puoi scaricare l'app direttamente sul tuo telefono Android!
+Puoi testare l'app direttamente sul tuo telefono Android!
 
 1. Vai alla pagina [Releases](../../releases) di questo repository.
-2. Scarica il file più recente.
-3. Apri il file scaricato sul tuo dispositivo Android.
-4. Tocca **Installa** *(Nota: potrebbe essere necessario abilitare "Installa app sconosciute" nelle impostazioni del tuo telefono).*
+2. Scarica il file `.apk` più recente.
+3. Apri il file scaricato sul tuo dispositivo Android e tocca **Installa**.
+*(Nota: potrebbe essere necessario abilitare "Installa app sconosciute" nelle impostazioni del tuo telefono).*
+
+---
 
 ## Autore
 
 **Francesco Massimo Capobianco**
-- GitHub: [@FrancescoCapobianco](https://github.com/FrancescoCapobianco)
+* GitHub: [@FrancescoCapobianco](https://github.com/FrancescoCapobianco)
