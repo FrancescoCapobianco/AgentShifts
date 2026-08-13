@@ -111,6 +111,7 @@ public class ShiftSystem {
     }
 
 
+    // Quando l'Activity chiede i dati di una giornata:
     public WorkingDay getGiornataLavorativa(Date data) {
         if (utenteLoggato == null) return null;
 
@@ -180,6 +181,10 @@ public class ShiftSystem {
 
     // --- METODI DI SCRITTURA (CRUD - CREATE) ---
 
+    /**
+     * Metodo di supporto: Azzera ore, minuti e secondi da una Data.
+     * Fondamentale per far funzionare correttamente la ricerca nel database SQLite!
+     */
     private Date normalizzaData(Date data) {
         java.util.Calendar cal = java.util.Calendar.getInstance();
         cal.setTime(data);
@@ -190,7 +195,9 @@ public class ShiftSystem {
         return cal.getTime();
     }
 
-
+    /**
+     * Cerca una giornata per la data indicata. Se non esiste, la crea e la salva nel DB.
+     */
     public WorkingDay creaO_OttieniGiornataLavorativa(Date data) {
         if (utenteLoggato == null) return null;
 
@@ -213,7 +220,10 @@ public class ShiftSystem {
         return null;
     }
 
-
+    /**
+     * Registra un'intera giornata come "Riposo".
+     * Ritorna true se il salvataggio va a buon fine.
+     */
     public boolean impostaRiposo(Date data) {
         if (utenteLoggato == null) return false;
 
@@ -230,7 +240,9 @@ public class ShiftSystem {
         return resultId != -1;
     }
 
-
+    /**
+     * Crea un turno, lo salva e lo aggancia alla giornata.
+     */
     public boolean aggiungiTurno(WorkingDay giornata, String inizio, String fine, int allungo, int straordinario) {
         if (utenteLoggato == null || giornata == null)
             return false;
@@ -255,7 +267,9 @@ public class ShiftSystem {
         return false;
     }
 
-
+    /**
+     * Crea un volo usando il codice IATA per il logo, lo salva e lo aggiunge alla lista della giornata.
+     */
     public boolean aggiungiVolo(WorkingDay giornata, String compagnia, String arrivo, String destinazione, String codiceVolo) {
         if (giornata == null) return false;
 
@@ -284,7 +298,9 @@ public class ShiftSystem {
         return false;
     }
 
-
+    /**
+     * Modifica un turno esistente nel DB e aggiorna l'oggetto in RAM.
+     */
     public boolean modificaTurno(Shift turnoDaModificare, String nuovoInizio, String nuovaFine, int nuovoAllungo, int nuovoStraord) {
         if (turnoDaModificare == null) return false;
 
@@ -298,6 +314,10 @@ public class ShiftSystem {
         return righeModificate > 0;
     }
 
+    /**
+     * Elimina un'intera giornata lavorativa e, a cascata (grazie a SQLite),
+     * tutti i Turni e i Voli associati ad essa.
+     */
     public boolean eliminaGiornataLavorativa(Date data) {
         if (utenteLoggato == null) return false;
 
@@ -311,13 +331,16 @@ public class ShiftSystem {
         return false;
     }
 
-
+    /**
+     * Calcola una stima dello stipendio del mese in corso
+     */
     public float calcolaStipendioMeseCorrente() {
         if (utenteLoggato == null) return 0f;
 
         float stipendioTotale = 0f;
         Calendar cal = Calendar.getInstance();
 
+        // Impostiamo il calendario al primo giorno del mese corrente
         cal.set(Calendar.DAY_OF_MONTH, 1);
         int giorniNelMese = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
@@ -331,6 +354,40 @@ public class ShiftSystem {
                     stipendioTotale += StatsCalculator.calcolaIncassoTurno(turno, cal.getTime());
         }
         return stipendioTotale;
+    }
+
+    /**
+     * Permette di impostare Ferie obbligate o impreviste.
+     */
+    public boolean impostaFerie(Date data) {
+        if (utenteLoggato == null) return false;
+        Date dataNormalizzata = normalizzaData(data);
+        WorkingDay giornataEsistente = workingDayDB.getWorkingDayByDateAndUser(dataNormalizzata, utenteLoggato.getId());
+
+        if (giornataEsistente != null)
+            workingDayDB.deleteWorkingDay(giornataEsistente.getId());
+
+        WorkingDay giornoDiFerie = new WorkingDay(dataNormalizzata, utenteLoggato.getId(), false);
+        giornoDiFerie.setFerie(true);
+
+        long resultId = workingDayDB.insertWorkingDay(giornoDiFerie);
+        return resultId != -1;
+    }
+
+    /**
+     * Permette di impostare le Ferie programmate con l'azienda.
+     */
+    public boolean impostaFeriePeriodo(Date dataInizio, Date dataFine) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(normalizzaData(dataInizio));
+        Date end = normalizzaData(dataFine);
+
+        boolean success = true;
+        while (!cal.getTime().after(end)) {
+            if (!impostaFerie(cal.getTime())) success = false;
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        return success;
     }
 
     // Quando viene chiusa l'app:

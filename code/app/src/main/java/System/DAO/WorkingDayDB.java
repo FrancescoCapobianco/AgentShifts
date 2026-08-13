@@ -18,6 +18,7 @@ public class WorkingDayDB {
     public static final String COLUMN_DATA = "data";
     public static final String COLUMN_USER_ID = "userID";                       // Foreign Key
     public static final String COLUMN_IS_RIPOSO = "isRiposo";                   // Flag per Riposo Giornaliero
+    public static final String COLUMN_IS_FERIE = "isFerie";                     // Flag per Ferie
 
     private SQLiteDatabase database;
     private DatabaseHelper dbHelper;
@@ -40,6 +41,7 @@ public class WorkingDayDB {
     public long insertWorkingDay(WorkingDay workingDay) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_IS_RIPOSO, workingDay.isRiposo() ? 1 : 0);
+        values.put(COLUMN_IS_FERIE, workingDay.isFerie() ? 1 : 0);
 
         if (workingDay.getData() != null) {
             values.put(COLUMN_DATA, workingDay.getData().getTime());
@@ -94,11 +96,15 @@ public class WorkingDayDB {
         int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
         long dataMillis = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DATA));
         int userID = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID));
+
         int riposoInt = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_RIPOSO));
         boolean isRiposo = (riposoInt == 1);
+        int ferieInt = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_FERIE));
+        boolean isFerie = (ferieInt == 1);
 
         Date dateObj = new Date(dataMillis);
         WorkingDay workingDay = new WorkingDay(id, dateObj, userID, isRiposo);
+        workingDay.setFerie(isFerie);
 
         return workingDay;
     }

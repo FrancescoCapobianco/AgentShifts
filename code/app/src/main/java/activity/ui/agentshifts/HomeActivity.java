@@ -1,5 +1,6 @@
 package activity.ui.agentshifts;
 
+import android.app.DatePickerDialog;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -101,13 +102,29 @@ public class HomeActivity extends AppCompatActivity {
 
         String saluto;
 
+        /* Msg GirlFriend:
+        if (giorno == 24 && mese == Calendar.JANUARY
+                && "Federica".equalsIgnoreCase(utente.getNome())
+                && "Tomarchio".equalsIgnoreCase(utente.getCognome())) {
+            saluto = "Tanti auguri amore mio";
+            textBenvenuto.setText(saluto + "!");
+        } else {
+            if (oraDelGiorno >= 5 && oraDelGiorno <= 12)
+                saluto = "Buongiorno";
+            else if (oraDelGiorno >= 13 && oraDelGiorno <= 17)
+                saluto = "Buon pomeriggio";
+            else
+                saluto = "Buonasera";
+            textBenvenuto.setText(saluto + ", " + utente.getNome() + "!");
+        }
+        */
+
         if (oraDelGiorno >= 5 && oraDelGiorno <= 12)
             saluto = "Buongiorno";
         else if (oraDelGiorno >= 13 && oraDelGiorno <= 17)
             saluto = "Buon pomeriggio";
         else
             saluto = "Buonasera";
-        
         textBenvenuto.setText(saluto + ", " + utente.getNome() + "!");
 
         for (Azienda azienda : shiftSystem.getAziendeDisponibili()) {
@@ -251,9 +268,11 @@ public class HomeActivity extends AppCompatActivity {
                 Calendar eventCal = Calendar.getInstance();
                 eventCal.setTime(cal.getTime());
 
-                if (wd.isRiposo()) {
+                if (wd.isFerie())
+                    events.add(new EventDay(eventCal, R.drawable.ic_dot_ferie));
+                else if (wd.isRiposo())
                     events.add(new EventDay(eventCal, R.drawable.ic_dot_riposo));
-                } else if (wd.getTurni() != null && !wd.getTurni().isEmpty()) {
+                else if (wd.getTurni() != null && !wd.getTurni().isEmpty()) {
 
                     Shift primoTurno = wd.getTurni().get(0);
                     String testoPillola = primoTurno.getInizioTurno() + "-" + primoTurno.getFineTurno();
@@ -323,7 +342,11 @@ public class HomeActivity extends AppCompatActivity {
         boolean haTurni = giornata.getTurni() != null && !giornata.getTurni().isEmpty();
         boolean haVoli = giornata.getVoliGiornalieri() != null && !giornata.getVoliGiornalieri().isEmpty();
 
-        if (giornata.isRiposo() && !haTurni) {
+        if (giornata.isFerie()) {
+            textStatoGiornata.setText("FERIE");
+            textStatoGiornata.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
+        }
+        else if (giornata.isRiposo() && !haTurni) {
             textStatoGiornata.setText("RIPOSO");
             textStatoGiornata.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
         }
@@ -723,6 +746,53 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             return ore + " h " + minutiRestanti + " min";
         }
+    }
+
+    // btnFerie
+    public void actionImpostaFerie(View v) {
+        new AlertDialog.Builder(this)
+                .setTitle("Impostazione Ferie")
+                .setMessage("Vuoi impostare le ferie solo per il giorno selezionato o per un periodo programmato?")
+                .setPositiveButton("Giorno Singolo", (dialog, which) -> {
+                    if (shiftSystem.impostaFerie(dataSelezionataAttuale)) {
+                        Toast.makeText(this, "Ferie impostate!", Toast.LENGTH_SHORT).show();
+                        aggiornaDettagliGiornata(dataSelezionataAttuale);
+                        ricaricaEventiCalendario();
+                    }
+                })
+                .setNegativeButton("Periodo", (dialog, which) -> mostraDialogFeriePeriodo())
+                .setNeutralButton("Annulla", null)
+                .show();
+    }
+
+    private void mostraDialogFeriePeriodo() {
+        Calendar cal = Calendar.getInstance();
+        DatePickerDialog startDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            Calendar dataInizio = Calendar.getInstance();
+            dataInizio.set(year, month, dayOfMonth);
+
+            DatePickerDialog endDialog = new DatePickerDialog(this, (view2, year2, month2, dayOfMonth2) -> {
+                Calendar dataFine = Calendar.getInstance();
+                dataFine.set(year2, month2, dayOfMonth2);
+
+                if (dataFine.before(dataInizio)) {
+                    Toast.makeText(this, "Errore: la fine non può essere prima dell'inizio!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                shiftSystem.impostaFeriePeriodo(dataInizio.getTime(), dataFine.getTime());
+                Toast.makeText(this, "Ferie impostate!", Toast.LENGTH_SHORT).show();
+                aggiornaDettagliGiornata(dataSelezionataAttuale);
+                ricaricaEventiCalendario();
+
+            }, year, month, dayOfMonth);
+            endDialog.setTitle("Seleziona Data di FINE ferie");
+            endDialog.show();
+
+        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+
+        startDialog.setTitle("Seleziona Data di INIZIO ferie");
+        startDialog.show();
     }
 
 }

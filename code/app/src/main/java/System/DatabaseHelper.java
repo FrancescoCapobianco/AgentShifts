@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "AgentShifts.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Tabella USER
     private static final String CREATE_TABLE_USER =
@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     WorkingDayDB.COLUMN_DATA + " INTEGER, " +
                     WorkingDayDB.COLUMN_USER_ID + " INTEGER, " +
                     WorkingDayDB.COLUMN_IS_RIPOSO + " INTEGER DEFAULT 0, " +
+                    WorkingDayDB.COLUMN_IS_FERIE +  " INTEGER DEFAULT 0, " +
                     "FOREIGN KEY(" + WorkingDayDB.COLUMN_USER_ID + ") REFERENCES " +
                     UserDB.TABLE_USER + "(" + UserDB.COLUMN_ID + ") ON DELETE CASCADE);";
 
@@ -78,15 +79,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_FLIGHT);
     }
 
-    // Se cambia DATABASE_VERSION:
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         switch (oldVersion) {
             case 1:
-                // aggiornamenti futuri
+                db.execSQL("ALTER TABLE " + WorkingDayDB.TABLE_WORKING_DAY + " ADD COLUMN " + WorkingDayDB.COLUMN_IS_FERIE + " INTEGER DEFAULT 0;");
             case 2:
-                // Per futuri passaggi dalla v2 alla v3...
-                // Niente "break" alla fine dei case, così gli aggiornamenti avvengono a cascata.
+                // ...Futuri aggiornamenti...
         }
     }
 

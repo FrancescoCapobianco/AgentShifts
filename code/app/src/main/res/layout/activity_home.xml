@@ -238,8 +238,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:weightSum="3">
+        android:layout_marginBottom="9dp"
+        android:weightSum="4">
 
         <Button
             android:id="@+id/btnAggiungiTurno"
@@ -259,7 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="4dp"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="#513F8F"
             android:text="Volo"
             android:onClick="actionAggiungiVolo"
             android:textColor="@android:color/white"
@@ -270,10 +270,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginEnd="4dp"
             android:backgroundTint="#4CAF50"
             android:text="Riposo"
             android:onClick="actionImpostaRiposo"
             android:textColor="@android:color/white"
             android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btnImpostaFerie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#F44336"
+            android:text="Ferie"
+            android:onClick="actionImpostaFerie"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
     </LinearLayout>
 </LinearLayout>

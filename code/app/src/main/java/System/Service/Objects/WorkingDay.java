@@ -13,6 +13,7 @@ public class WorkingDay {
     private final Date data;                       // Unique
     private List<Shift> turni;                     // Possibile Turno: Normale, Rientri
     private boolean isRiposo;                      // Flag per il riposo giornaliero
+    private boolean isFerie;                       // Flag per ferie
     private List<Flight> voliGiornalieri;
 
     // Costruttori:
@@ -46,6 +47,9 @@ public class WorkingDay {
 
     public boolean isRiposo() { return isRiposo; }
     public void setRiposo(boolean riposo) { isRiposo = riposo; }
+
+    public boolean isFerie() { return isFerie; }
+    public void setFerie(boolean ferie) { isFerie = ferie; }
 
     public List<Flight> getVoliGiornalieri() { return voliGiornalieri; }
     public void setVoliGiornalieri(List<Flight> voliGiornalieri) { this.voliGiornalieri = voliGiornalieri; }
