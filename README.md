@@ -25,7 +25,7 @@ Un'applicazione Android sviluppata in Java per gestire in maniera semplice e int
 ## Funzionalità
 
 * **Calendario Interattivo:** Naviga tra i mesi e gestisci i tuoi impegni con un'interfaccia fluida.
-* **Gestione Turni e Voli:** Aggiungi, modifica e tieni traccia di turni, voli e giorni di riposo.
+* **Gestione Turni e Voli:** Aggiungi, modifica e tieni traccia di turni, voli, giorni di riposo e giorni di ferie.
 * **UI/UX Moderna:** Interfaccia pulita.
 * **Tema Dinamico:** Supporto completo alla **Modalità Chiara e Scura** di sistema.
 
