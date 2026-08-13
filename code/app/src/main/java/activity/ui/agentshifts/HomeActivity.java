@@ -102,23 +102,6 @@ public class HomeActivity extends AppCompatActivity {
 
         String saluto;
 
-        /* Msg GirlFriend:
-        if (giorno == 24 && mese == Calendar.JANUARY
-                && "Federica".equalsIgnoreCase(utente.getNome())
-                && "Tomarchio".equalsIgnoreCase(utente.getCognome())) {
-            saluto = "Tanti auguri amore mio";
-            textBenvenuto.setText(saluto + "!");
-        } else {
-            if (oraDelGiorno >= 5 && oraDelGiorno <= 12)
-                saluto = "Buongiorno";
-            else if (oraDelGiorno >= 13 && oraDelGiorno <= 17)
-                saluto = "Buon pomeriggio";
-            else
-                saluto = "Buonasera";
-            textBenvenuto.setText(saluto + ", " + utente.getNome() + "!");
-        }
-        */
-
         if (oraDelGiorno >= 5 && oraDelGiorno <= 12)
             saluto = "Buongiorno";
         else if (oraDelGiorno >= 13 && oraDelGiorno <= 17)
