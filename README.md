@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/FrancescoCapobianco/AgentShifts/releases/latest">
-    <img src="https://img.shields.io/badge/Download_APK-v1.0.1-2196F3?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
+    <img src="https://img.shields.io/badge/Download_APK-v1.1.0-2196F3?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
 </p>
 
